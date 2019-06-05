@@ -1,5 +1,6 @@
 package com.assign.app.dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,19 +20,27 @@ public class SignUpDAO {
 		System.out.println("created:\t"+this.getClass().getSimpleName());
 	}
 	
-	public void signUpDAO(UserDTO userDTO) {
-		System.out.println("signUpDAO started");
+	public String signUpDAO(UserDTO userDTO) {
+		//System.out.println("signUpDAO started");
+		String hql="from UserDTO where email=:em";
 		Session session=factory.openSession();
 		Transaction transaction=session.beginTransaction();
-		try {
-		session.save(userDTO);
-		transaction.commit();
+		
+		Query query=session.createQuery(hql);
+		query.setParameter("em", userDTO.getEmail());
+		UserDTO dtoFromDB=(UserDTO) query.uniqueResult();
+		
+		if(dtoFromDB!=null) {
+			//System.out.println("Email id is already present");
+			return  "email" ;
 		}
-		catch(Exception e) {
-			e.printStackTrace();
+		else {
+			session.save(userDTO);
+			transaction.commit();
+			return "user created successfully";
 		}
 		
-		System.out.println("signUpDAO ended");
 	}
 
 }
+

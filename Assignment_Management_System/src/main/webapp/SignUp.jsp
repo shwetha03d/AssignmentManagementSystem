@@ -23,9 +23,6 @@ EmailId:<input type="text" name="email"><br><br>
 <input type="submit" value="SignUp"> <input type="reset" value="Reset">
 
 
-
-
-
 </form>
 
 </body>

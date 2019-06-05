@@ -1,4 +1,4 @@
 com\assign\app\dto\UserDTO.class
-com\assign\app\controller\SignUpController.class
 com\assign\app\service\SignUpService.class
 com\assign\app\dao\SignUpDAO.class
+com\assign\app\controller\SignUpController.class

@@ -21,7 +21,20 @@ public class SignUpService {
 		System.out.println("created:\t"+this.getClass().getSimpleName());
 	}
 	
-	public void signUpService(UserDTO userDTO) {
+	
+	public String sendMail(String to, String subject,String text,String password) {
+		
+		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
+		
+		simpleMailMessage.setTo(to);
+		simpleMailMessage.setSubject(subject);
+		simpleMailMessage.setText(text);
+		
+		return "Mail sent to:\t"+to;
+		
+	}
+	
+	public String signUpService(UserDTO userDTO) {
 		System.out.println("signUpService Started");
 		userDTO.setNewUser(true);
 		userDTO.setPassword("secrete");
@@ -30,16 +43,26 @@ public class SignUpService {
 		
 		System.out.println(userDTO);
 		
+		String result=signUpDAO.signUpDAO(userDTO);
+		
 		String email=userDTO.getEmail();
 		String password=userDTO.getPassword();
 		SimpleMailMessage simpleMessage=new SimpleMailMessage();
+		
 		simpleMessage.setTo(email);
-		simpleMessage.setSubject("Confirmation Mail From Assignment Management System");
-		simpleMessage.setText("Your account is created \n"+
-		"please login by using \n"+ "email:\n"+email +"password:"+password);
-		mailSender.send(simpleMessage);
+		
+		String subject="Confirmation Mail From Assignment Management System";
+		
+		String text="Your account is created \n"+
+		"please login by using \n"+ "email:\n"+email +"password:"+password;
+		
+		String emailResult=sendMail(email,subject,text,password);
+		System.out.println(emailResult);
+		
+		//mailSender.send(simpleMessage);
 
 		System.out.println("signUpService ended");
+		return result;
 	}
 
 }
