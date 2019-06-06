@@ -30,6 +30,8 @@ public class SignUpService {
 		simpleMailMessage.setSubject(subject);
 		simpleMailMessage.setText(text);
 		
+		mailSender.send(simpleMailMessage);
+		
 		return "Mail sent to:\t"+to;
 		
 	}
@@ -60,7 +62,7 @@ public class SignUpService {
 		String emailResult=sendMail(email,subject,text,password);
 		System.out.println(emailResult);
 		
-		mailSender.send(simpleMessage);
+		//mailSender.send(simpleMessage);
 
 		System.out.println("signUpService ended");
 		return result;
