@@ -47,6 +47,7 @@ public class SignUpService {
 		
 		String email=userDTO.getEmail();
 		String password=userDTO.getPassword();
+		
 		SimpleMailMessage simpleMessage=new SimpleMailMessage();
 		
 		simpleMessage.setTo(email);

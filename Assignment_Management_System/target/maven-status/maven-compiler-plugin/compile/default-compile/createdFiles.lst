@@ -1,1 +1,9 @@
+com\assign\app\dto\UserDTO.class
+com\assign\app\service\SignUpService.class
+com\assign\app\controller\LogDemo.class
+com\assign\app\dto\SignInDTO.class
+com\assign\app\service\SignInService.class
 com\assign\app\controller\SignInController.class
+com\assign\app\dao\SignUpDAO.class
+com\assign\app\controller\SignUpController.class
+com\assign\app\dao\SignInDAO.class
