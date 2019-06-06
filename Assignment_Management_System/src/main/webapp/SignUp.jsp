@@ -5,10 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SignUp</title>
-</head>
-<body>
-<form action="SignUp.ams" method="post">
+</head> 
+<body align="center">
 
+<h1 align="center">SignUp</h1>
+<form action="SignUp.ams" method="post" >
+<img alt="Welcome" src="bg1.jpg">
 FirstName:<input type="text" name="fName"><br><br>
 LastName:<input type="text" name="lName"><br><br>
 CountryCode:<select name="cCode">
