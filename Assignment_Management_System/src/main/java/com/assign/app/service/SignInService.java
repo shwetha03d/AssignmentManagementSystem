@@ -1,5 +1,7 @@
 package com.assign.app.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,29 @@ public class SignInService {
 	
 	public UserDTO signInService(SignInDTO signInDTO) {
 		UserDTO dtoFromDb=signInDAO.signInDAO(signInDTO);
-		
+		System.out.println("Data FROM Service:"+dtoFromDb);
 		return dtoFromDb;
+	}
+
+	public void updateLastLogInAndFailCountService(UserDTO dtoFromDb) {
+		String email = dtoFromDb.getEmail();
+		Date date=new Date();
+		int failCount=0;
+		boolean newUser=false;
+		
+		System.out.println(email);
+		System.out.println(date);
+		System.out.println(failCount);
+		System.out.println(newUser);
+		
+		
+		signInDAO.updateLastLogInAndFailCountDAO(email,date,failCount,newUser);	
+		
+	}
+
+	public void failedLogInService(UserDTO dtoFromDb) {
+		signInDAO.failedLogInDAO(dtoFromDb);
+		
 	}
 
 }

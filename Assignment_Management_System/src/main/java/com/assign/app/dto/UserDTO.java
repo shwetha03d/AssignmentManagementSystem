@@ -1,6 +1,7 @@
 package com.assign.app.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,16 @@ public class UserDTO implements Serializable {
 	private boolean newUser;
 	@Column(name="PASSWORD")
 	private String password;
+	@Column(name="FAIL_COUNT")
+	private int failCount;
+	@Column(name="LAST_LOGIN")
+	private Date lastLogIn;
+	
+	public UserDTO() {
+		System.out.println("created:\t"+this.getClass().getSimpleName());
+	}
+	
+
 	public String getfName() {
 		return fName;
 	}
@@ -71,9 +82,32 @@ public class UserDTO implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public int getFailCount() {
+		return failCount;
+	}
+
+
+	public void setFailCount(int failCount) {
+		this.failCount = failCount;
+	}
+
+
+	public Date getLastLogIn() {
+		return lastLogIn;
+	}
+
+
+	public void setLastLogIn(Date lastLogIn) {
+		this.lastLogIn = lastLogIn;
+	}
+
+
 	@Override
 	public String toString() {
 		return "UserDTO [fName=" + fName + ", lName=" + lName + ", cCode=" + cCode + ", mobileNo=" + mobileNo
-				+ ", email=" + email + ", newUser=" + newUser + ", password=" + password + "]";
+				+ ", email=" + email + ", newUser=" + newUser + ", password=" + password + ", failCount=" + failCount
+				+ ", lastLogIn=" + lastLogIn + "]";
 	}
 }
